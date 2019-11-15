@@ -7,6 +7,11 @@ import outilsJeu.SymboleOrdi;
 
 public class Duel extends Mode {
 	
+	/**
+	 * codeSecret1 : code Secret de l'ordinateur dans la phase de jeu ou le joueur attaque
+	 * codeJoueur1 : code Proposé par le joueur humain
+	 */
+	
 	protected int codeSecret1 ;
 	protected int codeJoueur1 ;
 	
@@ -49,10 +54,15 @@ public class Duel extends Mode {
 		
 		System.out.println("A votre tour de jouer");
 		setCodeSecret1(humJ.lgCodeOrdi(b));
-		System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret1());
+		
+		if (dev.equals("True")) {
+			
+			System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret1());
+			}
+		
 		System.out.println("Tapez un code " + b + " chiffres");
 		setCodeJoueur1(humJ.lgCodeUti(b,b));
-		System.out.println("le code secret est "+ getCodeSecret1());
+		
 		System.out.println("le code proposé par le joueur est "+ getCodeJoueur1());
 		symb1.setCodeHumain(humJ.getCodeUti());
 		symb1.setCodeOrdi(humJ.getCodeOrdi());
@@ -65,6 +75,17 @@ public class Duel extends Mode {
 			System.out.println("Voici le code proposé par l'ordinateur "+ getCodeJoueur());
 			System.out.println("entrer une combinaison de " + b + " symboles");
 			symb.chsymb();
+			int A=ordJ.getCodeUti();
+			int g=ordJ.getCodeOrdi();
+			String SymboleVraie =symb.verificationUtilisateur(A,g);
+			while(!SymboleVraie.equals(symb.getSymb())){
+				System.out.println("Vous avez noté une combinaison mauvaise");
+				System.out.println("entrer une combinaison de " + b + " symboles");
+				System.out.println("le code secret est "+ getCodeSecret());
+				System.out.println("le code proposé par l'ordinateur "+ getCodeJoueur());
+				symb.chsymb();
+			}
+			
 			System.out.println("voici les 4 symboles entré" +symb.getSymb());
 			symb.codeJ(b);
 			setCodeJoueur(symb.getCodeOrdi());
@@ -72,7 +93,10 @@ public class Duel extends Mode {
 			
 			////////////////////////////////////////////////////////////////////////////
 			System.out.println("Vous attaquez");
-			System.out.println("le code secret est "+ getCodeSecret1());
+			if (dev.equals("True")) {
+				
+				System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret1());
+				}
 			System.out.println("Voici le code que vous avez proposé "+ getCodeJoueur1());
 			symb1.chsymb();
 			
@@ -101,15 +125,34 @@ public class Duel extends Mode {
 		
 	}
 
+	
+	/**
+	 * retourne codeJoueur1
+	 * @return CodeJoueur1
+	 */
 	public int getCodeJoueur1() {
 		return codeJoueur1;
 	}
+	/**
+	 * modifie codeJoueur1
+	 * @param number
+	 */
 	public void setCodeJoueur1(int number) {
 		this.codeJoueur1 = number;
 	}
+	/**
+	 * retourne codeSecret1
+	 * @return CodeSecret1
+	 */
+	
 	public int getCodeSecret1() {
 		return codeSecret1;
 	}
+	
+	/**
+	 * modifie codeSecret1
+	 * @param number
+	 */
 	public void setCodeSecret1(int number) {
 		this.codeSecret1 = number;
 	}

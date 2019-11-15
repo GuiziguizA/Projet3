@@ -11,6 +11,13 @@ import java.util.Scanner;
 
 public class SymboleOrdi extends Symbole {
 	
+	
+	
+	/**
+	 * 
+	 * @param borneM
+	 * @param borneP
+	 */
 	public SymboleOrdi(int[] borneM, int[] borneP) {
 		super(borneM, borneP);
 		// TODO Auto-generated constructor stub
@@ -35,7 +42,7 @@ public class SymboleOrdi extends Symbole {
 	  * si le signe est egale le chiffre ne change pas
 	  * 
 	  */
-	public void codeJ() {
+	public void codeJ(int number) {
 		List<String> list = new ArrayList<String>();
 		//String combisymb = mot ;
 		String anciencombi = String.valueOf(codeOrdi);
@@ -81,7 +88,7 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 				A = Integer.toString(chiffre);
 				list.add(A);
 			}
-			System.out.println(vv+" "+car2+" "+borneP[i]+" "+ borneM[i] +" "+ chiffre);
+			//System.out.println(vv+" "+car2+" "+borneP[i]+" "+ borneM[i] +" "+ chiffre);
 			
 			
 			
@@ -95,6 +102,11 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 			
 		
 	}
+	
+	
+	
+	
+	
 	
 	
 }

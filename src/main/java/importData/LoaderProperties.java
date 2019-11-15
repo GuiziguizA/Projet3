@@ -6,6 +6,11 @@ import java.util.Properties;
 
 public class LoaderProperties {
 
+	
+	/**
+	 * fonction important les données du config.properties 
+	 * @return un tableau contenant les informations contenus dans le config.properties
+	 */
 
 	public  String[] configurationPropriete() {
 

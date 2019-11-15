@@ -24,22 +24,25 @@ public class Symbole {
 	
 	
 	/**
+	 * Methode modifiant BorneM et BorneP
+	 * @param borneM
+	 * @param borneP
+	 */
+	public Symbole(int [] borneM,int [] borneP) {
+		// TODO Auto-generated constructor stub
+	
+		this.borneM=borneM;
+		this.borneP=borneP;
+	
+	}
+	
+	/**
 	 * Fonction affichant les symboles +,-,= en fonction des de chaques chiffres de la combi
 	 * Le code référence etant le code secret
 	 * Modifie la variable symbole 
 	 * @param number code secret 
 	 * @param number1 code proposer par le joueur
 	 */
-	public Symbole(int [] borneM,int [] borneP) {
-		// TODO Auto-generated constructor stub
-		this.symb = symb;
-		this.borneM=borneM;
-		this.borneP=borneP;
-		this.codeOrdi=codeOrdi;
-		this.codeHumain=codeHumain;
-	}
-	
-	
 	public void chsymb() {
 		
 		final String SEPARATEUR = "";
@@ -109,8 +112,6 @@ public void codeJ(int number) {
 	if(d.length() != number) {
 		System.out.println(" Entrez Uniquement un code a " + number + "chiffres svp" );
 	}else if(d.length() == number) {
-		
-		System.out.println("c'est bon " );
 	}
 	
 	System.out.println("longueur " + (d.length() ));
@@ -137,7 +138,7 @@ public int getCodeOrdi() {
 }
 
 /**
- * Fonction retournant borneM[i]
+ * Fonction retournant borneM
  * @return
  */
 
@@ -146,13 +147,20 @@ public int [] getBorneM() {
 	return borneM;
 }
 
+/**
+ * Fonction modifiant borneM
+ * @param tableau
+ */
 
 public void setBorneM(int [] tableau) {
 	
 	this.borneM = tableau ;
 }
 
-
+/**
+ * Fonction modifiant borneP
+ * @param tableau
+ */
 public void setBorneP(int [] tableau) {
 	
 	this.borneP = tableau ;
@@ -186,4 +194,55 @@ public void setCodeOrdi(int number) {
 	this.codeOrdi=number;
 }
 
+
+/**
+ * Methode retournant un string en fonction de number et number 1
+ * @param number
+ * @param number1
+ * @return
+ */
+
+public String verificationUtilisateur( int number, int number1) {
+	String codeSymbole;
+	final String SEPARATEUR = "";
+	// car va avec number
+	char car;
+	// car1 va avec number1
+	char car1;
+	String code;
+	
+	String proposition;
+	code = String.valueOf(number);
+	proposition = String.valueOf(number1);
+	String mot[] = proposition.split(SEPARATEUR);
+	ArrayList<String> arraylist = new ArrayList<String>();
+	for (int i = 0; i < mot.length; i++) {
+	car = code.charAt(i);
+	car1 = proposition.charAt(i);
+	
+	
+	if ( car > car1) {
+		arraylist.add("+");
+	}else if (car == car1) {
+		arraylist.add("=");
+	}else {
+		arraylist.add("-");
+	}
+
+	
+	
+	}
+	//System.out.println("les indices sont" + arraylist.get(0) + arraylist.get(1) + arraylist.get(2) + arraylist.get(3));
+	 codeSymbole= arraylist.get(0)+ arraylist.get(1) + arraylist.get(2)+ arraylist.get(3);
+	
+	
+	
+	return codeSymbole ;
 }
+
+
+
+}
+
+
+

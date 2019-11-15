@@ -13,6 +13,8 @@ public class Parti {
 	 */
 	
 	public void game() {
+		
+		
 		System.out.println("Bonjour et bienvenue dans ce jeu de hasard");
 		System.out.println("Vous disposez de trois mode de jeu : ");
 		System.out.println("Le mode Challenge");
@@ -52,10 +54,13 @@ public class Parti {
 		
 		
 		Mode challenge = new Mode();
+		challenge.setdev();
 		Mode defense = new Defense();
+		defense.setdev();
 		Mode duel = new Duel();
-		
+		duel.setdev();
 		if (d == 1) {
+		
 			System.out.println("Vous jouez au mode Challenge");
 			log.info("le joueur joue au mode challenge");
 			

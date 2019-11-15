@@ -58,7 +58,7 @@ public class CodeJeu {
 					System.out.println(" Entrez Uniquement un code a " + number + "chiffres svp" );
 				}else if(d.length() == number) {
 					
-					System.out.println("c'est bon " );
+					
 				}
 	  
       
