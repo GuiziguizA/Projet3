@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"structureJeu","l":"Defense"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"structureJeu","l":"App"},{"p":"org.exemple.demo","l":"AppTest"},{"p":"structureJeu","l":"Challenge"},{"p":"outilsJeu","l":"CodeJeu"},{"p":"structureJeu","l":"Defense"},{"p":"structureJeu","l":"Duel"},{"p":"importData","l":"LoaderProperties"},{"p":"structureJeu","l":"Mode"},{"p":"structureJeu","l":"Parti"},{"p":"outilsJeu","l":"Symbole"},{"p":"outilsJeu","l":"SymboleOrdi"}]
