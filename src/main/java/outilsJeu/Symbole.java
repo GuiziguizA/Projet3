@@ -1,7 +1,9 @@
 package outilsJeu;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
+
+import structureJeu.App;
 
 
 
@@ -93,20 +95,21 @@ public class Symbole {
  */
 public void codeJ(int number) {
 	String d;
-	Scanner scan = new Scanner(System.in);
+	
+	//Scanner scan = new Scanner(System.in);
 	do {
 	do{
 		
-		if (scan.hasNextInt()) {
+		if (App.SCANNER.hasNextInt()) {
 		
 		}else {
 			System.out.println(" Entrez Uniquement un code a " + number + "chiffres");
-			scan.next();
+			App.SCANNER.next();
 		}
 		
 	
-	}while(!scan.hasNextInt()) ;
-	this.codeHumain=scan.nextInt();
+	}while(!App.SCANNER.hasNextInt()) ;
+	this.codeHumain=App.SCANNER.nextInt();
 	d = Integer.toString(codeHumain);
 	
 	if(d.length() != number) {
@@ -118,6 +121,7 @@ public void codeJ(int number) {
 	
 	}while(d.length() != number) ;
 	
+	//scan.close();
 	}
 
 

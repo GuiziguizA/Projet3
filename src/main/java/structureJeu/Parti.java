@@ -1,6 +1,6 @@
 package structureJeu;
 
-import java.util.Scanner;
+
 
 import org.apache.log4j.Logger;
 
@@ -22,7 +22,7 @@ public class Parti {
 		System.out.println("Le mode Duel");	
 		int version;
 		
-		Scanner scan = new Scanner(System.in);
+		
 		do {
 		
 		System.out.println("entrer 1 pour jouer au mode Challenge");
@@ -33,16 +33,16 @@ public class Parti {
 		do {
 		do{
 			
-			if (scan.hasNextInt()) {
+			if (App.SCANNER.hasNextInt()) {
 			
 			}else {
 				System.out.println(" Entrez Uniquement 1 ,2 ou 3 dans la console");
-				scan.next();
+				App.SCANNER.next();
 			}
 			
 		
-		}while(!scan.hasNextInt()) ;
-		d = scan.nextInt();
+		}while(!App.SCANNER.hasNextInt()) ;
+		d = App.SCANNER.nextInt();
 		
 		if (d<=0 || d>=4 ) {
 		System.out.println(" Entrez Uniquement 1 ,2 ou 3 dans la console svp");
@@ -53,7 +53,7 @@ public class Parti {
 		
 		
 		
-		Mode challenge = new Mode();
+		Mode challenge = new Challenge();
 		challenge.setdev();
 		Mode defense = new Defense();
 		defense.setdev();
@@ -63,21 +63,22 @@ public class Parti {
 		
 			System.out.println("Vous jouez au mode Challenge");
 			log.info("le joueur joue au mode challenge");
-			
+			challenge.chargerDonneesProperties();
 			challenge.deroulerjeu();
 		}else if (d== 2) {
 			System.out.println("Vous jouez au mode Defense");
 			log.info("le joueur joue au mode Defense");
-			
+			defense.chargerDonneesProperties();
 			defense.deroulerjeu();
 		}else if (d==3) {
 			System.out.println("Vous jouez au mode Duel");
 			log.info("le joueur joue au mode Duel");
+			duel.chargerDonneesProperties();
 			duel.deroulerjeu();
 		}
 	System.out.println("entrer 0 si vous voulez rejouer ou 1 si vous voulez arreter");
-		version = scan.nextInt();
-		
+		version = App.SCANNER.nextInt();
+		//scan.close();
 		} while(version != 1);
 	}
 	

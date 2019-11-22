@@ -1,7 +1,9 @@
 package outilsJeu;
 
 import java.util.Random;
-import java.util.Scanner;
+
+import structureJeu.App;
+
 
 public class CodeJeu {
 
@@ -15,7 +17,7 @@ public class CodeJeu {
 	 * @param nbre le parametre nbre correpond au nbre de chiffre dans la combinaison
 	 * @return combinaison de l'ordinateur
 	 */
-	public int lgCodeOrdi (int nbre){
+	public int CodeOrdinateur (int nbre){
 		double p = Math.pow(10,nbre);
 		int borneP = (int)p;
 		double v = Math.pow(10,nbre-1);
@@ -29,30 +31,28 @@ public class CodeJeu {
 	}
 	
 	/**
-	 * fonction retournant une combinaison saisi par l'utilisateur a n chiffre a n chiffres
+	 * fonction retournant une combinaison saisi par l'utilisateur a n chiffre 
 	 * @param nbre le parametre nbre correpond au nbre de chiffre dans la combinaison
 	 * @return combinaison utilisateur
 	 */
 	
-	    public int  lgCodeUti(int nbre, int number) {
+	    public int  CodeUtilisateur(int nbre, int number) {
 	    
-	    	double p = Math.pow(10,nbre);
-			int borneP = (int)p;
-			double v = Math.pow(10,nbre-1);
-			int borneM = (int)v;
-			Scanner scan = new Scanner(System.in);
+	    	
+			
+			
 			String d ;
         
 			do {
 				do {
-					if (scan.hasNextInt()) {
+					if (App.SCANNER.hasNextInt()) {
 						
 					}else {
 						System.out.println(" Entrez Uniquement un code a " + number + "chiffres");
-						scan.next();
+						App.SCANNER.next();
 					}
-				}while(!scan.hasNextInt()) ;
-				codeUti = scan.nextInt();
+				}while(!App.SCANNER.hasNextInt()) ;
+				codeUti = App.SCANNER.nextInt();
 				d = Integer.toString(codeUti);
 				if(d.length() != number) {
 					System.out.println(" Entrez Uniquement un code a " + number + "chiffres svp" );
@@ -64,7 +64,9 @@ public class CodeJeu {
       
      
 			}while(d.length() != number) ;
-			return  codeUti;     
+			//scan.close();
+			return  codeUti;  
+			
     }
 	    
 	    

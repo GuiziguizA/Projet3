@@ -1,6 +1,6 @@
 package structureJeu;
 
-import importData.LoaderProperties;
+
 import outilsJeu.CodeJeu;
 import outilsJeu.Symbole;
 import outilsJeu.SymboleOrdi;
@@ -23,47 +23,43 @@ public class Duel extends Mode {
 	 */
 
 	public  void deroulerjeu() {
-		LoaderProperties pd = new LoaderProperties();
-		String [] propriete = pd.configurationPropriete();
-		String longueurCombinaison = propriete[0];
-		int b = Integer.parseInt(longueurCombinaison);	
+			
 		
 		
 		
 	    CodeJeu humJ = new CodeJeu(); 
 	    CodeJeu ordJ = new CodeJeu();
 	    
-	    int bornesP [] = {9,9,9,9};
-	    int bornesM [] = {0,0,0,0};
+	  
 		Symbole symb = new SymboleOrdi(bornesM,bornesP);
 		Symbole symb1  = new Symbole(bornesM,bornesP);
 		
 		
 		System.out.println("Vous allé effectuer un Duel avec l'ordinateur tour par tour");
 		System.out.println("L'ordinateur va commencer a chercher");
-		System.out.println("Tapez un code secret " + b + " chiffres");
-		setCodeSecret(ordJ.lgCodeUti(b,b));
-		System.out.println("Voici le code secret que vous venez de rentrer " + getCodeSecret());
+		System.out.println("Tapez un code secret " + longueurCombinaison + " chiffres");
+		setCodeSecret(ordJ.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
+		System.out.println("Voici le code secret que vous venez de rentrer " + String.valueOf(getCodeSecret()));
 		
-		setCodeJoueur(ordJ.lgCodeOrdi(b));
+		setCodeJoueur(ordJ.CodeOrdinateur(longueurCombinaison));
 		symb.setCodeHumain(ordJ.getCodeUti());
 		symb.setCodeOrdi(ordJ.getCodeOrdi());
-		System.out.println("le code proposé par l'ordinateur "+ getCodeJoueur());
+		System.out.println("le code proposé par l'ordinateur "+String.valueOf( getCodeJoueur()));
 		
 		
 		
 		System.out.println("A votre tour de jouer");
-		setCodeSecret1(humJ.lgCodeOrdi(b));
+		setCodeSecret1(humJ.CodeOrdinateur(longueurCombinaison));
 		
 		if (dev.equals("True")) {
 			
-			System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret1());
+			System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret1()));
 			}
 		
-		System.out.println("Tapez un code " + b + " chiffres");
-		setCodeJoueur1(humJ.lgCodeUti(b,b));
+		System.out.println("Tapez un code " + longueurCombinaison + " chiffres");
+		setCodeJoueur1(humJ.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
 		
-		System.out.println("le code proposé par le joueur est "+ getCodeJoueur1());
+		System.out.println("le code proposé par le joueur est "+ String.valueOf(getCodeJoueur1()));
 		symb1.setCodeHumain(humJ.getCodeUti());
 		symb1.setCodeOrdi(humJ.getCodeOrdi());
 		System.out.println("C'est parti le jeu commence");
@@ -71,39 +67,39 @@ public class Duel extends Mode {
 		do {
 			System.out.println("Tour " + essai);
 			System.out.println("Ordinateur attaque");
-			System.out.println("Voici le code secret que vous avez de rentrer " + getCodeSecret());
-			System.out.println("Voici le code proposé par l'ordinateur "+ getCodeJoueur());
-			System.out.println("entrer une combinaison de " + b + " symboles");
+			System.out.println("Voici le code secret que vous avez de rentrer " + String.valueOf(getCodeSecret()));
+			System.out.println("Voici le code proposé par l'ordinateur "+String.valueOf( getCodeJoueur()));
+			System.out.println("entrer une combinaison de " + longueurCombinaison + " symboles");
 			symb.chsymb();
 			int A=ordJ.getCodeUti();
 			int g=ordJ.getCodeOrdi();
 			String SymboleVraie =symb.verificationUtilisateur(A,g);
 			while(!SymboleVraie.equals(symb.getSymb())){
 				System.out.println("Vous avez noté une combinaison mauvaise");
-				System.out.println("entrer une combinaison de " + b + " symboles");
-				System.out.println("le code secret est "+ getCodeSecret());
-				System.out.println("le code proposé par l'ordinateur "+ getCodeJoueur());
+				System.out.println("entrer une combinaison de " + longueurCombinaison+ " symboles");
+				System.out.println("le code secret est "+ String.valueOf(getCodeSecret()));
+				System.out.println("le code proposé par l'ordinateur "+ String.valueOf(getCodeJoueur()));
 				symb.chsymb();
 			}
 			
 			System.out.println("voici les 4 symboles entré" +symb.getSymb());
-			symb.codeJ(b);
+			symb.codeJ(longueurCombinaison);
 			setCodeJoueur(symb.getCodeOrdi());
-			System.out.println("Voici le nouveu code que l'ordi a entré " + symb.getCodeOrdi());
+			System.out.println("Voici le nouveu code que l'ordi a entré " + String.valueOf(symb.getCodeOrdi()));
 			
 			////////////////////////////////////////////////////////////////////////////
 			System.out.println("Vous attaquez");
 			if (dev.equals("True")) {
 				
-				System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret1());
+				System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret1()));
 				}
-			System.out.println("Voici le code que vous avez proposé "+ getCodeJoueur1());
+			System.out.println("Voici le code que vous avez proposé "+ String.valueOf(getCodeJoueur1()));
 			symb1.chsymb();
 			
 			System.out.println("Voici les indices pour touver le code secret " + symb1.getSymb());
 			
-			System.out.println("entrer un code " + b + " chiffres");
-			symb1.codeJ(b);
+			System.out.println("entrer un code " + longueurCombinaison + " chiffres");
+			symb1.codeJ(longueurCombinaison);
 			setCodeJoueur1(symb1.getCodeHumain());
 			System.out.println("Voici le nouveu code que vous avez entré " + getCodeJoueur1());
 			

@@ -3,7 +3,9 @@ package outilsJeu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
+
+
+import structureJeu.App;
 
 
 
@@ -28,8 +30,9 @@ public class SymboleOrdi extends Symbole {
 	 */
 
 	public void chsymb() {
-		Scanner scan = new Scanner(System.in);
-		this.symb  = scan.nextLine();
+		//Scanner scan = new Scanner(System.in);
+		 App.SCANNER.next();
+		this.symb  = App.SCANNER.nextLine();
 		
 		
 	}
@@ -49,7 +52,7 @@ public class SymboleOrdi extends Symbole {
 		int chiffre;
 		String A ;
 		String B ;
-		int result;
+		
 		
 		
 for (int i=0; i<=anciencombi.length()-1;i++) {
@@ -59,16 +62,19 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 			char car = anciencombi.charAt(i);
 			String car1 = String.valueOf(car);
 			int car2 = Integer.parseInt(car1);
+			Random rand = new Random();
 			if ( vv.equals("+")) {
 			
 			
 			
 			
 			this.borneM[i]=car2;
-			Random rand = new Random();
-			chiffre = rand.nextInt(borneP[i] - borneM[i] + 1) + borneM[i] ;
 			
-		
+			//chiffre = rand.nextInt(borneP[i] - borneM[i] + 1) + borneM[i] ;
+			chiffre = borneM[i] + rand.nextInt(borneP[i] - borneM[i] );
+			while(chiffre==borneM[i]) {
+				chiffre=borneM[i] + rand.nextInt(borneP[i] - borneM[i] );
+			}
 			A = Integer.toString(chiffre);
 			list.add(A);
 			
@@ -76,8 +82,9 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 				
 				
 				this.borneP[i]=car2;
-				Random rand = new Random();
-				chiffre = rand.nextInt(borneP[i] - borneM[i] + 1) + borneM[i] ;
+				
+			//	int valeur = valeurMin + r.nextInt(valeurMax - valeurMin)
+				chiffre = borneM[i] + rand.nextInt(borneP[i] - borneM[i] ) ;
 				
 				A = Integer.toString(chiffre);
 				list.add(A);

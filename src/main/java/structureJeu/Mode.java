@@ -1,10 +1,11 @@
 package structureJeu;
 
-import importData.LoaderProperties;
-import outilsJeu.CodeJeu;
-import outilsJeu.Symbole;
 
-public class Mode {
+import importData.LoaderProperties;
+
+
+
+public abstract class Mode {
 	
 /*
  * codeSecret correspond au code secret 
@@ -16,86 +17,31 @@ public class Mode {
 	protected int codeJoueur ;
 	protected int essai = 1;
 	protected String dev = "False";
+	protected int longueurCombinaison=2;
+	protected int nombreDeTentative=4;
+	protected int bornesP [] = {10,10,10,10};
+	protected int bornesM [] = {0,0,0,0};
+	
+	
+	
+	/*
+	 * methode permettant de changer les variables longueurCombinaison et nombreDeTentative en appelant la classe PropertiesCache 
+	 */
+	public void chargerDonneesProperties() {
+		
+		this.longueurCombinaison  = Integer.parseInt(LoaderProperties.getInstance().getProperty("longueurCombinaison"));
+		this.nombreDeTentative = Integer.parseInt(LoaderProperties.getInstance().getProperty("nombreDeTentative"));
+		
+	}
+	
+	
+	
+	
 	
 	/**
-	 * methode s'occupant du deroulement du premier mode de jeu
-	 * modifie codeSecret
-	 * modifie codeJoueur
-	 * modifie essai
+	 * s'occupe deroulement du mode de jeu
 	 */
-	public  void deroulerjeu() {
-		
-		LoaderProperties pd = new LoaderProperties();
-		String [] propriete = pd.configurationPropriete();
-		String longueurCombinaison = propriete[0];
-		int b = Integer.parseInt(longueurCombinaison);	
-		String nombreDeTentative = propriete[1];
-		int a = Integer.parseInt(nombreDeTentative);	
-
-		CodeJeu df = new CodeJeu();
-	    int bornesP [] = {10,10,10,10};
-	    int bornesM [] = {0,0,0,0};
-		Symbole symb = new Symbole(bornesP,bornesM);
-		
-		System.out.println("Vous disposez de "+ a + " essais");
-		
-		setCodeSecret(df.lgCodeOrdi(b));
-		
-		
-		if (dev.equals("True")) {
-		
-		System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret());
-		}
-		System.out.println("Tapez un code " + b + " chiffres");
-		setCodeJoueur(df.lgCodeUti(b,b));
-		
-		
-		
-		System.out.println("le code proposé par le joueur est "+ getCodeJoueur());
-		if (dev.equals("True")) {
-			
-			System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret());
-			}
-		symb.setCodeHumain(df.getCodeUti());
-		symb.setCodeOrdi(df.getCodeOrdi());
-		
-		while(getCodeSecret() != getCodeJoueur() && a!=essai){
-			
-			
-			symb.chsymb();
-			System.out.println("Voici les indices pour touver le code secret " + symb.getSymb());
-			
-			
-			
-			
-			symb.codeJ(b);
-			setCodeJoueur(symb.getCodeHumain());
-			
-			if (getCodeSecret() != getCodeJoueur() && a > essai) {
-			System.out.println("Voici le nouveu code que vous avez entré " + getCodeJoueur());
-			if (dev.equals("True")) {
-				
-				System.out.println("Voici le code secret de l'ordinateur " + getCodeSecret());
-				}
-			essai++;
-			
-			System.out.println("il ne vous reste plus que "+  (a-essai) +" essais");
-			}
-			
-		}
-		
-		if (essai < a) {
-			System.out.println("Bravo Vous avez trouvé le code secret" + getCodeSecret() + " en "+ essai + " essais");
-			System.out.println("YOU WIN !!!!");
-		}else if ( essai == a) {
-			System.out.println("GAME OVER");
-		}else {
-			
-		}
-		
-
-
-	}
+	public abstract  void deroulerjeu();
 	
 	/*
 	 * Fonction permettant d'appeler la variable codeJoueur
@@ -135,13 +81,11 @@ public class Mode {
 	 */
 	
 	public void setdev() {
-		LoaderProperties devCondition = new LoaderProperties();
-		String [] Proprietes  = devCondition.configurationPropriete();
 		
 		
 		
 		
-		this.dev = Proprietes[2];
+		this.dev = LoaderProperties.getInstance().getProperty("dev");
 		
 	}
 	
