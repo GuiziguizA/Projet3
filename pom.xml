@@ -19,7 +19,7 @@
        <!-- ===== Organisation ===== -->
     <organization>
         <name>Guillaume Alisse</name>
-        <url>http://www.exemple.org</url>
+        <url></url>
     </organization>
     
     <!-- ===== Licences ===== --> 
@@ -41,7 +41,7 @@
       <scope>test</scope>
     </dependency>
     
-    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+    
 <dependency>
     <groupId>log4j</groupId>
     <artifactId>log4j</artifactId>

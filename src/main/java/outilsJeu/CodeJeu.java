@@ -48,14 +48,14 @@ public class CodeJeu {
 					if (App.SCANNER.hasNextInt()) {
 						
 					}else {
-						System.out.println(" Entrez Uniquement un code a " + number + "chiffres");
+						System.out.println(" Entrez Uniquement un code a " + number + " chiffres");
 						App.SCANNER.next();
 					}
 				}while(!App.SCANNER.hasNextInt()) ;
 				codeUti = App.SCANNER.nextInt();
 				d = Integer.toString(codeUti);
 				if(d.length() != number) {
-					System.out.println(" Entrez Uniquement un code a " + number + "chiffres svp" );
+					System.out.println(" Entrez Uniquement un code a " + number + " chiffres svp" );
 				}else if(d.length() == number) {
 					
 					
