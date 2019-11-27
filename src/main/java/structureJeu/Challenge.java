@@ -27,7 +27,7 @@ public  void deroulerjeu() {
 		
 		System.out.println("Voici le code secret de l'ordinateur " +String.valueOf(getCodeSecret()));
 		}
-		System.out.println("Tapez un code " + longueurCombinaison + " chiffres");
+		System.out.println("Tapez un code composé de " + longueurCombinaison + " chiffres");
 		setCodeJoueur(df.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
 		
 		
@@ -53,7 +53,7 @@ public  void deroulerjeu() {
 			setCodeJoueur(symb.getCodeHumain());
 			
 			if (getCodeSecret() != getCodeJoueur() && nombreDeTentative > essai) {
-			System.out.println("Voici le nouveu code que vous avez entré " + String.valueOf(getCodeJoueur()));
+			System.out.println("Voici le nouveu code que vous avez proposé " + String.valueOf(getCodeJoueur()));
 			if (dev.equals("True")) {
 				
 				System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret()));
@@ -66,7 +66,7 @@ public  void deroulerjeu() {
 		}
 		
 		if (essai < nombreDeTentative) {
-			System.out.println("Bravo Vous avez trouvé le code secret" + String.valueOf(getCodeSecret() )+ " en "+ essai + " essais");
+			System.out.println("Bravo Vous avez trouvé le code secret " + String.valueOf(getCodeSecret() )+ " en "+ essai + " essais");
 			System.out.println("YOU WIN !!!!");
 		}else if ( essai == nombreDeTentative) {
 			System.out.println("GAME OVER");

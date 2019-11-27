@@ -1,11 +1,11 @@
 package outilsJeu;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 import java.util.Random;
+import java.util.Scanner;
 
-
-import structureJeu.App;
+//import structureJeu.App;
 
 
 
@@ -22,7 +22,6 @@ public class SymboleOrdi extends Symbole {
 	 */
 	public SymboleOrdi(int[] borneM, int[] borneP) {
 		super(borneM, borneP);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,9 +29,9 @@ public class SymboleOrdi extends Symbole {
 	 */
 
 	public void chsymb() {
-		//Scanner scan = new Scanner(System.in);
-		 App.SCANNER.next();
-		this.symb  = App.SCANNER.nextLine();
+		Scanner scan = new Scanner(System.in);
+		 //App.SCANNER.next();
+		this.symb  = scan.nextLine();
 		
 		
 	}
@@ -46,14 +45,14 @@ public class SymboleOrdi extends Symbole {
 	  * 
 	  */
 	public void codeJ(int number) {
-		List<String> list = new ArrayList<String>();
+	
 		//String combisymb = mot ;
 		String anciencombi = String.valueOf(codeOrdi);
 		int chiffre;
 		String A ;
 		String B ;
 		
-		
+		StringBuilder symbole =  new StringBuilder() ;
 		
 for (int i=0; i<=anciencombi.length()-1;i++) {
 			
@@ -76,7 +75,7 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 				chiffre=borneM[i] + rand.nextInt(borneP[i] - borneM[i] );
 			}
 			A = Integer.toString(chiffre);
-			list.add(A);
+			symbole.append(A);
 			
 			}else if (vv.equals("-")) {
 				
@@ -87,13 +86,13 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 				chiffre = borneM[i] + rand.nextInt(borneP[i] - borneM[i] ) ;
 				
 				A = Integer.toString(chiffre);
-				list.add(A);
+				symbole.append(A);
 				
 			}else {
 				
 				chiffre = car2;
 				A = Integer.toString(chiffre);
-				list.add(A);
+				symbole.append(A);
 			}
 			//System.out.println(vv+" "+car2+" "+borneP[i]+" "+ borneM[i] +" "+ chiffre);
 			
@@ -101,8 +100,8 @@ for (int i=0; i<=anciencombi.length()-1;i++) {
 			
 			
 		}
-		B = list.get(0)+list.get(1)+list.get(2)+list.get(3);
-		list.clear();
+		B = symbole.toString();
+	
 		this.codeOrdi= Integer.parseInt(B);
 		
 		

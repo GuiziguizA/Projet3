@@ -22,11 +22,14 @@ public class CodeJeu {
 		int borneP = (int)p;
 		double v = Math.pow(10,nbre-1);
 		int borneM = (int)v;
-		
+		String codeString;
 		Random r = new Random();
-		
+		do {
 		codeOrdi = borneM +r.nextInt(borneP - borneM);
-		 	
+		codeString = Integer. toString(codeOrdi);
+		}while(codeString.length()!=nbre);
+		
+		
 		return codeOrdi;
 	}
 	

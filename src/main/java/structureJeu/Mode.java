@@ -17,8 +17,8 @@ public abstract class Mode {
 	protected int codeJoueur ;
 	protected int essai = 1;
 	protected String dev = "False";
-	protected int longueurCombinaison=2;
-	protected int nombreDeTentative=4;
+	protected int longueurCombinaison=4;
+	protected int nombreDeTentative=8;
 	protected int bornesP [] = {10,10,10,10};
 	protected int bornesM [] = {0,0,0,0};
 	

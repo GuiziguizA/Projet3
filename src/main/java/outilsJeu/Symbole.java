@@ -1,6 +1,6 @@
 package outilsJeu;
 
-import java.util.ArrayList;
+
 
 
 import structureJeu.App;
@@ -31,7 +31,7 @@ public class Symbole {
 	 * @param borneP
 	 */
 	public Symbole(int [] borneM,int [] borneP) {
-		// TODO Auto-generated constructor stub
+		
 	
 		this.borneM=borneM;
 		this.borneP=borneP;
@@ -46,7 +46,7 @@ public class Symbole {
 	 * @param number1 code proposer par le joueur
 	 */
 	public void chsymb() {
-		
+		StringBuilder symbole = new StringBuilder();
 		final String SEPARATEUR = "";
 		// car va avec number
 		char car;
@@ -58,25 +58,25 @@ public class Symbole {
 		code = String.valueOf(codeOrdi);
 		proposition = String.valueOf(codeHumain);
 		String mot[] = proposition.split(SEPARATEUR);
-		ArrayList<String> arraylist = new ArrayList<String>();
+		
 		for (int i = 0; i < mot.length; i++) {
 		car = code.charAt(i);
 		car1 = proposition.charAt(i);
 		
 		
 		if ( car > car1) {
-			arraylist.add("+");
+			symbole.append("+");
 		}else if (car == car1) {
-			arraylist.add("=");
+			symbole.append("=");
 		}else {
-			arraylist.add("-");
+			symbole.append("-");
 		}
 	
 		
 		
 		}
 		//System.out.println("les indices sont" + arraylist.get(0) + arraylist.get(1) + arraylist.get(2) + arraylist.get(3));
-		 this.symb = arraylist.get(0)+ arraylist.get(1) + arraylist.get(2)+ arraylist.get(3);
+		 this.symb = symbole.toString();
 		 
 	}
 	/**
@@ -207,41 +207,44 @@ public void setCodeOrdi(int number) {
  */
 
 public String verificationUtilisateur( int number, int number1) {
-	String codeSymbole;
+	
 	final String SEPARATEUR = "";
 	// car va avec number
 	char car;
 	// car1 va avec number1
 	char car1;
 	String code;
+	StringBuilder codeSymbole =  new StringBuilder() ;
+	
+	
 	
 	String proposition;
 	code = String.valueOf(number);
 	proposition = String.valueOf(number1);
 	String mot[] = proposition.split(SEPARATEUR);
-	ArrayList<String> arraylist = new ArrayList<String>();
+	
 	for (int i = 0; i < mot.length; i++) {
 	car = code.charAt(i);
 	car1 = proposition.charAt(i);
 	
 	
 	if ( car > car1) {
-		arraylist.add("+");
+		codeSymbole.append("+");
 	}else if (car == car1) {
-		arraylist.add("=");
+		codeSymbole.append("=");
 	}else {
-		arraylist.add("-");
+		codeSymbole.append("-");
 	}
 
 	
 	
 	}
 	//System.out.println("les indices sont" + arraylist.get(0) + arraylist.get(1) + arraylist.get(2) + arraylist.get(3));
-	 codeSymbole= arraylist.get(0)+ arraylist.get(1) + arraylist.get(2)+ arraylist.get(3);
 	
 	
+	System.out.println( codeSymbole.toString());
 	
-	return codeSymbole ;
+	return codeSymbole.toString() ;
 }
 
 
