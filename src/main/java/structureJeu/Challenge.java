@@ -70,6 +70,7 @@ public  void deroulerjeu() {
 			System.out.println("YOU WIN !!!!");
 		}else if ( essai == nombreDeTentative) {
 			System.out.println("GAME OVER");
+			System.out.println("Le code secret était "+ getCodeSecret());
 		}else {
 			
 		}
