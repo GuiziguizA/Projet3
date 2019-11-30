@@ -34,7 +34,7 @@ public class Defense extends Mode {
 		System.out.println("Voici le code secret que vous venez de proposer " + getCodeSecret());
 		
 		setCodeJoueur(df.CodeOrdinateur(longueurCombinaison));
-		System.out.println("Le code secret est "+ getCodeSecret());
+		
 		System.out.println("Le code proposé par l'ordinateur "+ getCodeJoueur());
 		
 		
@@ -66,6 +66,7 @@ public class Defense extends Mode {
 			
 			
 			System.out.println("Voici les " + longueurCombinaison + " symboles que vous avez proposé " +symb.getSymb());
+			System.out.println("Le code secret est "+ String.valueOf(getCodeSecret()));
 			symb.codeJ(longueurCombinaison);
 			setCodeJoueur(symb.getCodeOrdi());
 			if (dev.equals("True")) {
@@ -74,11 +75,14 @@ public class Defense extends Mode {
 			System.out.println("Voici le nouveu code que l'ordinateur a proposé " +String.valueOf( symb.getCodeOrdi()));
 			
 			essai++;
-			
+			if(!SymboleVraie.equals(symb.getSymb())) {
 			System.out.println("Il ne reste plus que "+  (nombreDeTentative-essai) +" essais à l'ordinateur");
+			}else {
+				
+			}
 			
 		}if (essai < nombreDeTentative) {
-			System.out.println("L'ordinateur a trouvé le code secret" + String.valueOf(getCodeSecret()) + " en "+ essai + " essais");
+			System.out.println("L'ordinateur a trouvé le code secret " + String.valueOf(getCodeSecret()) + " en "+ essai + " essais");
 			System.out.println("GAME OVER");
 		}else {
 			
