@@ -4,7 +4,14 @@ package importData;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
+import structureJeu.Parti;
+
 public class LoaderProperties {
+	
+	Logger log = Logger.getLogger(Parti.class);
+	
     static private LoaderProperties _instance = null;
     static public String longueurCombinaison = "4";
     static public String nombreDeTentative = "6";
@@ -22,6 +29,7 @@ public class LoaderProperties {
        } 
     catch(Exception e){
         System.out.println("error" + e);
+        log.warn("le fichier properties ne se charge pas");
        }	 
     }
 	 

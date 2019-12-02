@@ -20,17 +20,19 @@ public class Parti {
 		System.out.println("Le mode Challenge");
 		System.out.println("Le mode Defense");
 		System.out.println("Le mode Duel");	
-		int version;
-		
+		int version=1;
+		int d = 0 ;
+		int rejouer = 0;
 		
 		do {
-		
+		if (version!=0) {
 		System.out.println("entrer 1 pour jouer au mode Challenge");
 		System.out.println("entrer 2 pour jouer au mode Defense");
 		System.out.println("entrer 3 pour jouer au mode Duel");
-		int d = 0 ;
+		
 		
 		do {
+			
 		do{
 			
 			if (App.SCANNER.hasNextInt()) {
@@ -49,7 +51,9 @@ public class Parti {
 		}
 		}while(d<=0 || d>=4 ) ;
 		
-		
+		}else {
+		d = rejouer;
+		}
 		
 		
 		
@@ -65,6 +69,7 @@ public class Parti {
 			log.info("le joueur joue au mode challenge");
 			challenge.chargerDonneesProperties();
 			challenge.deroulerjeu();
+			
 		}else if (d== 2) {
 			System.out.println("Vous jouez au mode Defense");
 			log.info("le joueur joue au mode Defense");
@@ -76,10 +81,17 @@ public class Parti {
 			duel.chargerDonneesProperties();
 			duel.deroulerjeu();
 		}
-	System.out.println("entrer 0 si vous voulez rejouer ou 1 si vous voulez arreter");
+	System.out.println("entrer 0 si vous voulez rejouer 1 si vous voulez retourner au menu principal ou 2 si vous voulez arrêter");
 		version = App.SCANNER.nextInt();
 		//scan.close();
-		} while(version != 1);
+		if( version == 0 ) {
+		rejouer = d;
+		 version = 0;
+		}else {
+			d = 1;
+			version = 1;
+		}
+		} while(version != 2);
 	}
 	
 	

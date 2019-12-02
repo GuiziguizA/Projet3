@@ -4,6 +4,8 @@ package structureJeu;
 
 
 
+import org.apache.log4j.Logger;
+
 import outilsJeu.CodeJeu;
 import outilsJeu.Symbole;
 import outilsJeu.SymboleOrdi;
@@ -20,7 +22,7 @@ public class Defense extends Mode {
 	public  void deroulerjeu() {
 		
 			
-		
+		Logger log = Logger.getLogger(Parti.class);
 		
 		
 	    CodeJeu df = new CodeJeu(); 
@@ -84,10 +86,12 @@ public class Defense extends Mode {
 		}if (essai < nombreDeTentative) {
 			System.out.println("L'ordinateur a trouvé le code secret " + String.valueOf(getCodeSecret()) + " en "+ essai + " essais");
 			System.out.println("GAME OVER");
+			log.info("le joueur a perdu");
 		}else {
 			
 			System.out.println("YOU WIN !!!!");
 			System.out.println("L'ordinateur n'a pas trouvé votre code secret");
+			log.info("le joueur a gagné");
 		}
 		
 		

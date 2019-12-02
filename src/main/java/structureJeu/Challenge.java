@@ -1,5 +1,7 @@
 package structureJeu;
 
+import org.apache.log4j.Logger;
+
 import outilsJeu.CodeJeu;
 import outilsJeu.Symbole;
 
@@ -13,7 +15,7 @@ public class Challenge extends Mode {
 	 */
 public  void deroulerjeu() {
 		
-		
+		Logger log = Logger.getLogger(Parti.class);
 		CodeJeu df = new CodeJeu();
 	    
 		Symbole symb = new Symbole(bornesP,bornesM);
@@ -68,9 +70,11 @@ public  void deroulerjeu() {
 		if (essai < nombreDeTentative) {
 			System.out.println("Bravo Vous avez trouvé le code secret " + String.valueOf(getCodeSecret() )+ " en "+ essai + " essais");
 			System.out.println("YOU WIN !!!!");
+			log.info("le joueur a gagné");
 		}else if ( essai == nombreDeTentative) {
 			System.out.println("GAME OVER");
 			System.out.println("Le code secret était "+ getCodeSecret());
+			log.info("le joueur a perdu");
 		}else {
 			
 		}

@@ -1,6 +1,8 @@
 package structureJeu;
 
 
+import org.apache.log4j.Logger;
+
 import outilsJeu.CodeJeu;
 import outilsJeu.Symbole;
 import outilsJeu.SymboleOrdi;
@@ -25,7 +27,7 @@ public class Duel extends Mode {
 	public  void deroulerjeu() {
 			
 		
-		
+		Logger log = Logger.getLogger(Parti.class);
 		
 	    CodeJeu humJ = new CodeJeu(); 
 	    CodeJeu ordJ = new CodeJeu();
@@ -111,8 +113,10 @@ public class Duel extends Mode {
 		
 		if (getCodeSecret() == getCodeJoueur()) {
 			System.out.println("GAME OVER");
+			log.info("le joueur a perdu");
 		}else {
 			System.out.println("YOU WIN");
+			log.info("le joueur a gagné");
 		}
 		
 		
