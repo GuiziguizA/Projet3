@@ -54,11 +54,11 @@ public class Parti {
 		
 		
 		Mode challenge = new Challenge();
-		challenge.setdev();
+		
 		Mode defense = new Defense();
-		defense.setdev();
+		
 		Mode duel = new Duel();
-		duel.setdev();
+		
 		if (d == 1) {
 		
 			System.out.println("Vous jouez au mode Challenge");

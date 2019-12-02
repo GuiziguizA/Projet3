@@ -1,9 +1,6 @@
 package structureJeu;
 
-
 import importData.LoaderProperties;
-
-
 
 public abstract class Mode {
 	
@@ -16,9 +13,9 @@ public abstract class Mode {
 	protected int codeSecret ;
 	protected int codeJoueur ;
 	protected int essai = 1;
-	protected String dev = "False";
-	protected int longueurCombinaison=4;
-	protected int nombreDeTentative=8;
+	protected String dev ;
+	protected int longueurCombinaison;
+	protected int nombreDeTentative;
 	protected int bornesP [] = {10,10,10,10};
 	protected int bornesM [] = {0,0,0,0};
 	
@@ -28,9 +25,10 @@ public abstract class Mode {
 	 * methode permettant de changer les variables longueurCombinaison et nombreDeTentative en appelant la classe PropertiesCache 
 	 */
 	public void chargerDonneesProperties() {
-		
-		this.longueurCombinaison  = Integer.parseInt(LoaderProperties.getInstance().getProperty("longueurCombinaison"));
-		this.nombreDeTentative = Integer.parseInt(LoaderProperties.getInstance().getProperty("nombreDeTentative"));
+		LoaderProperties dbInfo = LoaderProperties.instance();
+		this.longueurCombinaison  = Integer.parseInt(dbInfo.longueurCombinaison);
+		this.nombreDeTentative =Integer.parseInt(dbInfo.nombreDeTentative);
+		this.dev =dbInfo.dev;
 		
 	}
 	
@@ -80,15 +78,7 @@ public abstract class Mode {
 	 * Fonction permettant de changer la variable dev avec les configuration du fichier config.properties
 	 */
 	
-	public void setdev() {
-		
-		
-		
-		
-		this.dev = LoaderProperties.getInstance().getProperty("dev");
-		
-	}
-	
+
 	
 	
 }
