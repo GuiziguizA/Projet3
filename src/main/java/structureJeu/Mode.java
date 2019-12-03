@@ -41,6 +41,32 @@ public abstract class Mode {
 	 */
 	public abstract  void deroulerjeu();
 	
+	
+	/*
+	 * méthode gérant l'affichage en cas de victoire
+	 */
+	public abstract  void affichageVictoire();
+	
+	/*
+	 * méthode gérant l'affichage en cas de défaite
+	 */
+	public abstract  void affichageDefaite();
+	
+	
+	/*
+	 * affiche le nombre de tentative 
+	 */
+
+	
+	public void affichageNombreDeTentative() {
+		// TODO Auto-generated method stub
+		System.out.println("Vous disposez de "+ nombreDeTentative + " essais");
+	}
+	
+	
+	
+	
+	
 	/*
 	 * Fonction permettant d'appeler la variable codeJoueur
 	 */
@@ -74,12 +100,39 @@ public abstract class Mode {
 
 	
 	
-	/*
-	 * Fonction permettant de changer la variable dev avec les configuration du fichier config.properties
-	 */
-	
 
+/*
+ * gere le mode developpeur
+ */
+	public void affichageDev() {
+		if (dev.equals("True")) {
+			
+			System.out.println("Voici le code secret de l'ordinateur " +String.valueOf(getCodeSecret()));
+			}
+	}
 	
+	/*
+	 * Affiche les instruction du joueur
+	 */
+	public void affichageJoueur(){
+		System.out.println("Tapez un code composé de " + longueurCombinaison + " chiffres");
+		
+	}
+
+
+/*
+ * affiche les instruction si la combinaison de symbole est fausse
+ */
+
+
+public void affichageSymboleFaux() {
+	System.out.println("Vous avez noté une fausse combinaison");
+	System.out.println("Entrer une combinaison de " +longueurCombinaison + " symboles");
+	System.out.println("Le code secret est "+ String.valueOf(getCodeSecret()));
+	
+	System.out.println("Le code proposé par l'ordinateur "+ String.valueOf(getCodeJoueur()));
 	
 }
+}
+
 

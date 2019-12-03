@@ -39,7 +39,7 @@ public class Duel extends Mode {
 		
 		System.out.println("Vous allez effectuer un Duel avec l'ordinateur tour par tour");
 		System.out.println("L'ordinateur va commencer à attaquer");
-		System.out.println("Tapez un code secret composé de " + longueurCombinaison + " chiffres");
+		affichageJoueur();
 		setCodeSecret(ordJ.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
 		System.out.println("Voici le code secret que vous venez de rentrer : " + String.valueOf(getCodeSecret()));
 		
@@ -53,10 +53,7 @@ public class Duel extends Mode {
 		System.out.println("A votre tour d'attaquer");
 		setCodeSecret1(humJ.CodeOrdinateur(longueurCombinaison));
 		
-		if (dev.equals("True")) {
-			
-			System.out.println("Voici le code secret de l'ordinateur : " + String.valueOf(getCodeSecret1()));
-			}
+		affichageDev1();
 		
 		System.out.println("Tapez un code composé de " + longueurCombinaison + " chiffres");
 		setCodeJoueur1(humJ.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
@@ -77,10 +74,7 @@ public class Duel extends Mode {
 			int g=ordJ.getCodeOrdi();
 			String SymboleVraie =symb.verificationUtilisateur(A,g);
 			while(!SymboleVraie.equals(symb.getSymb())){
-				System.out.println("Vous avez noté une combinaison mauvaise");
-				System.out.println("Entrer une combinaison de " + longueurCombinaison+ " symboles");
-				System.out.println("Le code secret est "+ String.valueOf(getCodeSecret()));
-				System.out.println("Le code proposé par l'ordinateur "+ String.valueOf(getCodeJoueur()));
+				affichageSymboleFaux();
 				symb.chsymb();
 			}
 			
@@ -91,16 +85,13 @@ public class Duel extends Mode {
 			
 			////////////////////////////////////////////////////////////////////////////
 			System.out.println("Vous attaquez");
-			if (dev.equals("True")) {
-				
-				System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret1()));
-				}
+			affichageDev1();
 			System.out.println("Voici le code que vous avez proposé "+ String.valueOf(getCodeJoueur1()));
 			symb1.chsymb();
 			
 			System.out.println("Voici les indices pour touver le code secret " + symb1.getSymb());
 			
-			System.out.println("entrer un code " + longueurCombinaison + " chiffres");
+			affichageJoueur();
 			symb1.codeJ(longueurCombinaison);
 			setCodeJoueur1(symb1.getCodeHumain());
 			System.out.println("Voici le nouveu code que vous avez entré " + getCodeJoueur1());
@@ -112,10 +103,10 @@ public class Duel extends Mode {
 		}while(getCodeSecret() != getCodeJoueur() && getCodeSecret1() != getCodeJoueur1());
 		
 		if (getCodeSecret() == getCodeJoueur()) {
-			System.out.println("GAME OVER");
+			affichageDefaite();
 			log.info("le joueur a perdu");
 		}else {
-			System.out.println("YOU WIN");
+			affichageVictoire();
 			log.info("le joueur a gagné");
 		}
 		
@@ -157,7 +148,31 @@ public class Duel extends Mode {
 		this.codeSecret1 = number;
 	}
 
+
+	@Override
+	public void affichageVictoire() {
+		// TODO Auto-generated method stub
+		System.out.println("YOU WIN");
+	}
+
+
+	@Override
+	public void affichageDefaite() {
+		// TODO Auto-generated method stub
+		System.out.println("GAME OVER");
+	}
+
 	
+	
+	/*
+	 * affichage codeSecret1 en mode dev
+	 */
+	public void affichageDev1() {
+if (dev.equals("True")) {
+			
+			System.out.println("Voici le code secret de l'ordinateur : " + String.valueOf(getCodeSecret1()));
+			}
+	}
 }
 
 

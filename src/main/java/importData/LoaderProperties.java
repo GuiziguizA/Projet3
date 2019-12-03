@@ -29,7 +29,7 @@ public class LoaderProperties {
        } 
     catch(Exception e){
         System.out.println("error" + e);
-        log.warn("le fichier properties ne se charge pas");
+        log.error("le fichier properties ne se charge pas");
        }	 
     }
 	 

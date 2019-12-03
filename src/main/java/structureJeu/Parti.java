@@ -39,6 +39,7 @@ public class Parti {
 			
 			}else {
 				System.out.println(" Entrez Uniquement 1 ,2 ou 3 dans la console");
+				log.warn("le joueur a rentré une mauvaise combinaison lors du choix du mode");
 				App.SCANNER.next();
 			}
 			
@@ -48,6 +49,7 @@ public class Parti {
 		
 		if (d<=0 || d>=4 ) {
 		System.out.println(" Entrez Uniquement 1 ,2 ou 3 dans la console svp");
+		log.warn("le joueur a rentré une mauvaise combinaison lors du choix du mode");
 		}
 		}while(d<=0 || d>=4 ) ;
 		
@@ -66,7 +68,7 @@ public class Parti {
 		if (d == 1) {
 		
 			System.out.println("Vous jouez au mode Challenge");
-			log.info("le joueur joue au mode challenge");
+			log.info("le joueur joue au mode Challenge");
 			challenge.chargerDonneesProperties();
 			challenge.deroulerjeu();
 			

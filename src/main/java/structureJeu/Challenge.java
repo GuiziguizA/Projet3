@@ -20,25 +20,18 @@ public  void deroulerjeu() {
 	    
 		Symbole symb = new Symbole(bornesP,bornesM);
 		
-		System.out.println("Vous disposez de "+ nombreDeTentative + " essais");
+		affichageNombreDeTentative();
 		
 		setCodeSecret(df.CodeOrdinateur(longueurCombinaison));
 		
-		
-		if (dev.equals("True")) {
-		
-		System.out.println("Voici le code secret de l'ordinateur " +String.valueOf(getCodeSecret()));
-		}
-		System.out.println("Tapez un code composé de " + longueurCombinaison + " chiffres");
+		affichageDev();
+		affichageJoueur();
 		setCodeJoueur(df.CodeUtilisateur(longueurCombinaison,longueurCombinaison));
 		
 		
 		
-		System.out.println("le code proposé par le joueur est "+ String.valueOf(getCodeJoueur()));
-		if (dev.equals("True")) {
-			
-			System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret()));
-			}
+		//System.out.println("le code proposé par le joueur est "+ String.valueOf(getCodeJoueur()));
+		affichageDev();
 		symb.setCodeHumain(df.getCodeUti());
 		symb.setCodeOrdi(df.getCodeOrdi());
 		
@@ -56,10 +49,7 @@ public  void deroulerjeu() {
 			
 			if (getCodeSecret() != getCodeJoueur() && nombreDeTentative > essai) {
 			System.out.println("Voici le nouveu code que vous avez proposé " + String.valueOf(getCodeJoueur()));
-			if (dev.equals("True")) {
-				
-				System.out.println("Voici le code secret de l'ordinateur " + String.valueOf(getCodeSecret()));
-				}
+			affichageDev();
 			essai++;
 			
 			System.out.println("il ne vous reste plus que "+  (nombreDeTentative-essai) +" essais");
@@ -68,22 +58,35 @@ public  void deroulerjeu() {
 		}
 		
 		if (essai < nombreDeTentative) {
-			System.out.println("Bravo Vous avez trouvé le code secret " + String.valueOf(getCodeSecret() )+ " en "+ essai + " essais");
-			System.out.println("YOU WIN !!!!");
+			affichageVictoire();
 			log.info("le joueur a gagné");
 		}else if ( essai == nombreDeTentative) {
-			System.out.println("GAME OVER");
-			System.out.println("Le code secret était "+ getCodeSecret());
+			
+			affichageDefaite();
 			log.info("le joueur a perdu");
 		}else {
 			
 		}
 		
-
+	
+		
+		
+		
 
 	}
 
+	
+public  void affichageVictoire(){
+	System.out.println("Bravo Vous avez trouvé le code secret " + String.valueOf(getCodeSecret() )+ " en "+ essai + " essais");
+	System.out.println("YOU WIN !!!!");
+}
 
+
+public  void affichageDefaite(){
+	System.out.println("GAME OVER");
+	System.out.println("Le code secret était "+ getCodeSecret());
+	
+}
 
 
 

@@ -49,7 +49,7 @@ public class Defense extends Mode {
 		
 		
 		while(getCodeSecret() != getCodeJoueur() && nombreDeTentative!=essai){
-			System.out.println("Entrer une combinaison de " + longueurCombinaison + " symboles");
+			affichageJoueur();
 			symb.chsymb();
 			int A=symb.getCodeHumain();
 			int g=symb.getCodeOrdi();
@@ -58,11 +58,7 @@ public class Defense extends Mode {
 			System.out.println(SymboleVraie);
 			}
 			while(!SymboleVraie.equals(symb.getSymb())){
-				System.out.println("Vous avez noté une fausse combinaison");
-				System.out.println("Entrer une combinaison de " +longueurCombinaison + " symboles");
-				System.out.println("Le code secret est "+ String.valueOf(getCodeSecret()));
-				
-				System.out.println("Le code proposé par l'ordinateur "+ String.valueOf(getCodeJoueur()));
+				affichageSymboleFaux();
 				symb.chsymb();
 			}
 			
@@ -71,9 +67,7 @@ public class Defense extends Mode {
 			System.out.println("Le code secret est "+ String.valueOf(getCodeSecret()));
 			symb.codeJ(longueurCombinaison);
 			setCodeJoueur(symb.getCodeOrdi());
-			if (dev.equals("True")) {
-			System.out.println("Le code secret est "+String.valueOf( getCodeSecret()));
-			}
+			affichageDev();
 			System.out.println("Voici le nouveu code que l'ordinateur a proposé " +String.valueOf( symb.getCodeOrdi()));
 			
 			essai++;
@@ -84,16 +78,30 @@ public class Defense extends Mode {
 			}
 			
 		}if (essai < nombreDeTentative) {
-			System.out.println("L'ordinateur a trouvé le code secret " + String.valueOf(getCodeSecret()) + " en "+ essai + " essais");
-			System.out.println("GAME OVER");
+			affichageDefaite();
 			log.info("le joueur a perdu");
 		}else {
 			
-			System.out.println("YOU WIN !!!!");
-			System.out.println("L'ordinateur n'a pas trouvé votre code secret");
+			affichageVictoire();
 			log.info("le joueur a gagné");
 		}
 		
+		
+	}
+
+	@Override
+	public void affichageVictoire() {
+		// TODO Auto-generated method stub
+		System.out.println("YOU WIN !!!!");
+		System.out.println("L'ordinateur n'a pas trouvé votre code secret");
+		
+	}
+
+	@Override
+	public void affichageDefaite() {
+		// TODO Auto-generated method stub
+		System.out.println("L'ordinateur a trouvé le code secret " + String.valueOf(getCodeSecret()) + " en "+ essai + " essais");
+		System.out.println("GAME OVER");
 		
 	}
 

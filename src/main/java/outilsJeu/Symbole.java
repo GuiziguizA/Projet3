@@ -117,7 +117,7 @@ public void codeJ(int number) {
 	}else if(d.length() == number) {
 	}
 	
-	System.out.println("longueur " + (d.length() ));
+	
 	
 	}while(d.length() != number) ;
 	
